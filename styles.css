@@ -1,0 +1,379 @@
+/* Reset and base styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #000 !important;
+    color: #fff !important;
+    font-family: "Orbitron", sans-serif !important;
+}
+
+/* Navbar styles */
+.navbar {
+    background: linear-gradient(225deg, rgba(255, 0, 0, 0) 2.5%, rgba(255, 49, 49, 1), rgba(255, 0, 0, 0) 97.5%);
+    border-bottom: 0.33px solid gold;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-brand {
+    font-size: 1.2rem !important;
+    color: gold !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23FFD700' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+.navbar-toggler {
+    border-color: gold !important;
+}
+
+.navbar-toggler:hover,
+.navbar-toggler:focus {
+    border-color: #FFC107 !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5) !important;
+}
+
+.nav-link {
+    font-size: 1rem !important;
+    color: white !important;
+    transition: color 0.3s ease !important;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: gold !important;
+}
+
+.nav-link.active {
+    color: gold !important;
+    font-weight: 800 !important;
+    text-decoration: underline !important;
+}
+
+/* Content layout */
+#home {
+    flex: 1;
+    padding-bottom: 2rem;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.75s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.blinking-cursor {
+    color: rgb(255, 49, 49);
+    animation: blink 0.7s step-end infinite;
+    position: relative;
+    left: -4px;
+}
+
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.name { color: gold !important; }
+.title { color: rgb(255, 49, 49) !important; }
+
+/* Matrix Canvas */
+#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+
+/* Text effects */
+.display-4 {
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+/* View My Work Button */
+.btn-work {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #ff3131;
+    color: white !important;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 49, 49, 0.5);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-work::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, gold, #ff3131);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.btn-work:hover,
+.btn-work:active,
+.btn-work:focus {
+    color: gold !important;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    transform: translateY(-3px);
+}
+
+.btn-work:hover::before,
+.btn-work:active::before,
+.btn-work:focus::before {
+    opacity: 0.2;
+}
+
+.btn-work:active {
+    transform: translateY(-1px);
+}
+
+/* Social Links Section */
+#social {
+    position: relative;
+    z-index: 2;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    display: inline-block;
+    color: white !important;
+    transition: all 0.3s ease;
+}
+
+.social-link svg {
+    fill: currentColor;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    width: 24px;
+    height: 24px;
+}
+
+.social-link:hover,
+.social-link:active,
+.social-link:focus {
+    color: gold !important;
+    text-decoration: none;
+}
+
+.social-link:hover svg,
+.social-link:active svg,
+.social-link:focus svg {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.7));
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .social-link svg {
+        width: 22px;
+        height: 22px;
+    }
+    #social {
+        gap: 3rem !important;
+    }
+    .btn-work {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
+}
+
+/* About Me Section */
+.about-section {
+    background-color: rgba(0, 0, 0, 0.75);
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.profile-img {
+    max-width: 250px;
+    border: 3px solid gold;
+    padding: 5px;
+    transition: all 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.4) !important;
+}
+
+.section-title {
+    color: #ff3131;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 49, 49, 0.3);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, gold, #ff3131, transparent);
+}
+
+.text-gold {
+    color: gold;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.about-text p {
+    margin-bottom: 1.2rem;
+}
+
+/* Responsive adjustments for About section */
+@media (max-width: 992px) {
+    .profile-img {
+        max-width: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        text-align: center;
+    }
+
+    .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+    }
+
+    .profile-img {
+        max-width: 200px;
+        margin: 0 auto 1.5rem;
+    }
+
+    .about-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-img {
+        max-width: 180px;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* Full-height sections on desktop */
+@media (min-width: 992px) {
+    #home, #about, #portfolio {
+        height: 100vh;
+    }
+    #home .row, #about .row, #portfolio .row {
+        height: 100%;
+        align-items: center;
+    }
+    /* remove default container margins for full height */
+    #home { margin-top: 0; margin-bottom: 0; }
+}
+
+/* Scroll-to-top button */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff3131;
+    color: gold;
+    border: 2px solid gold;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+}
+#scrollTopBtn:hover {
+    background-color: #e60000;
+}
+#scrollTopBtn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Portfolio cards styling */
+.custom-card {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    border: 1px solid gold;
+    color: white !important;
+}
+.custom-card .card-title {
+    color: gold;
+}
+.custom-card .card-text {
+    color: #ddd;
+}
+
+/* Fade-up animation for portfolio cards */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Contact section styling */
+#contact {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+}
+#contact .form-control {
+    background-color: #111;
+    border: 1px solid #444;
+    color: #fff;
+}
+#contact .form-control:focus {
+    background-color: #222;
+    color: #fff;
+}
+#contact .btn-work {
+    width: 100%;
+}
